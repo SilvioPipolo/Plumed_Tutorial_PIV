@@ -1,0 +1,50 @@
+integrator          =  md			; leap-frog integrator
+;integrator          =  steep			; energy minimization
+;emtol               =  100.0
+;emstep              =  0.01
+
+tinit               =  0
+dt                  =  0.002			; time step [ps]
+nsteps              =  5000000                      		; number of steps
+nstcomm             =  500        		; reset c.o.m. motion
+
+nstxtcout           =  5000  			; write coords
+nstxout             =  5000			; write coords
+nstvout             =  5000	                ; write velocities
+nstfout             =  0  			; write forces
+nstlog		    =  5000  			; print energies to logfile
+nstcalcenergy       =  500 
+nstenergy           =  5000  			; print energies
+
+nstlist             =  10 			; update pairlist
+ns_type             =  grid			; pairlist method
+pbc                 =  xyz			; 3D periodicity
+
+coulombtype         =  PME
+rlist               =  0.58    		; cut-off for short-range nl [nm]
+rvdw                =  0.58    		; cut-off for vdw
+DispCorr 	    =  EnerPres
+rcoulomb            =  0.58    		; cut-off for coulomb
+fourierspacing      =  0.12
+pme_order           =  4
+ewald_rtol          =  1.0E-5
+cutoff-scheme       =  verlet
+
+Tcoupl              =  v-rescale	        ; temperature coupling
+tc-grps		    =  System
+ref_t		    =  250.  
+tau_t               =  0.02 
+
+Pcoupl              =  berendsen	; pressure bath
+;Pcoupl              =  Parrinello-Rahman
+Pcoupltype          =  anisotropic
+tau_p               =   0.2		; p-coupling time [ps]
+compressibility     = 1.25e-5 1.25e-5 1.25e-5 1.25e-5 1.25e-5 1.25e-5
+ref_p               =    1.    1.    1. 0 0 0
+
+gen_vel             =  no 
+gen_temp            =  100.		; initial temperature
+gen_seed            =  -1			; random seed
+
+;freezegrps          = OW1   
+;freezedim           = Y Y Y
